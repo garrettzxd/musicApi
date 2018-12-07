@@ -1,5 +1,5 @@
 let allRoute = require('./allRoute');
-let routes = require('./routesConfig');
+let routes = require('./routes');
 
 /**
  * [routers 路由组装函数，将路由配置中的全部实例化]

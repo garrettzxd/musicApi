@@ -1,10 +1,10 @@
 let db = require('../dataBase');
 
-function getSinger({country, gender, genre}) {
+function getSinger({area, gender, genre}) {
     let base_sql = 'SELECT * FROM singer ';
     let con = '';
-    if (country) {
-        con += `and country='${country}'`;
+    if (area) {
+        con += `and area='${area}'`;
     }
     if (gender) {
         con += `and gender='${gender}'`;
