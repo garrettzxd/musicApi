@@ -5,7 +5,7 @@ let {SUCCESS, MISS_PARAMETER, UN_KNOW_ERROR} = require('../common/ErrorContans')
 let {
     getSingerList,
     getSingerSongList
-} = require('../model/singer');
+} = require('../model/singer-model');
 
 //获取歌手列表
 router.get('/singerList', (req, res, next) => {
