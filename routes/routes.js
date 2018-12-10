@@ -9,4 +9,7 @@ module.exports = [{
 },{
     path: '/getAlbum',
     file_name: 'album'
+},{
+    path: '/getSong',
+    file_name: 'song'
 }];
