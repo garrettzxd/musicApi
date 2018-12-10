@@ -1,6 +1,12 @@
 let db = require('../dataBase');
 
-function getSinger({area, gender, genre}) {
+/**
+ * [getSingerList 获取歌手列表]
+ * @param [area] [Number] [歌手区域]
+ * @param [gender] [String] [性别]
+ * @param [genre] [String] [歌手分类]
+ * */
+function getSingerList({area, gender, genre}) {
     let base_sql = 'SELECT * FROM singer ';
     let con = '';
     if (area) {
@@ -24,4 +30,29 @@ function getSinger({area, gender, genre}) {
     })
 }
 
-module.exports = getSinger;
+/**
+ * [getSingerSongList 获取歌手歌曲列表]
+ * @param [singer_mid] [String] [歌手唯一标识]
+ * */
+function getSingerSongList({singer_mid}) {
+    let sql = `select * from song where singer_mid='${singer_mid}'`;
+    return db.fetch(sql).then((data) => {
+        return data;
+    }).catch((err) => {
+        throw new Error(err);
+    })
+}
+
+/**
+ * [getSingerAlbumList 获取歌手详情描述]
+ * */
+function getSingerDescribe({singer_mid}) {
+    //do something
+}
+
+
+module.exports = {
+    getSingerList,
+    getSingerSongList,
+    getSingerDescribe
+};

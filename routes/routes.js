@@ -5,8 +5,5 @@
  * */
 module.exports = [{
     path: '/getSinger',
-    file_name: 'getSingerList'
-},{
-    path: '/getSingerDetail',
-    file_name: 'getSingerDetail'
+    file_name: 'singer'
 }];
