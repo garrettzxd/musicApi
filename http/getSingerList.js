@@ -1,5 +1,5 @@
 let http = require('../common/http');
-let {dataProcessing} = require('../common/currency');
+let {dataProcessing, splicing} = require('../common/currency');
 const SINGLE_PAGE_NUM = 80;
 const BASE_URL = 'https://u.y.qq.com/cgi-bin/musicu.fcg?';
 const BASE_DATA = {
@@ -32,7 +32,6 @@ async function singeRequest(params) {
  * @return {string}            [生成的URL]
  */
 function _setUrl({page = 1, area = -100, sex = -100, genre = -100, index = -100} = {}) {
-    let result_url = BASE_URL;
     let son_data = {
         "comm":{
             "ct":24,
@@ -57,10 +56,7 @@ function _setUrl({page = 1, area = -100, sex = -100, genre = -100, index = -100}
     BASE_DATA.jsonpCallback = name;
     BASE_DATA.data = encodeURIComponent(JSON.stringify(son_data));
 
-    for(let key in BASE_DATA) {
-        result_url = result_url + `${key}=${BASE_DATA[key]}&`;
-    }
-    return result_url;
+    return splicing(BASE_URL, BASE_DATA);
 }
 
 module.exports = singeRequest;

@@ -9,6 +9,25 @@ function dataProcessing(data) {
     return JSON.parse(data.slice(fir_index,last_index));
 }
 
+/**
+ * [splicing 请求url拼接，构建get请求]
+ * @param [base] [String] 基础url
+ * @param [parameter] [Object] 参数对象
+ * @return String
+ * */
+function splicing(base, parameter) {
+    let result = base;
+    if (typeof parameter !== 'object') {
+        console.error('parameter must be Object');
+        return
+    }
+    for (let key in parameter) {
+        result = result + `${key}=${parameter[key]}&`;
+    }
+    return result;
+}
+
 module.exports = {
+    splicing,
     dataProcessing
 };

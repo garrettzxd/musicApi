@@ -1,5 +1,5 @@
 let http = require('../common/http');
-let {dataProcessing} = require('../common/currency');
+let {dataProcessing, splicing} = require('../common/currency');
 const SINGLE_REQUEST_COUNT = 40;   //单次请求数据量
 const BASE_URL = 'https://u.y.qq.com/cgi-bin/musicu.fcg?';
 const BASE_DATA = {
@@ -25,7 +25,6 @@ async function albumRequest(params) {
 }
 
 function _setUrl({area = 0, company = -1, genre = -1, type = -1, year = -1, sort = 2, index = 1} = {}) {
-    let result = BASE_URL;
     let son_data = {
         albumlib: {
             method: "get_album_by_tags",
@@ -48,10 +47,8 @@ function _setUrl({area = 0, company = -1, genre = -1, type = -1, year = -1, sort
     BASE_DATA.callback = name;
     BASE_DATA.jsonpCallback = name;
     BASE_DATA.data = JSON.stringify(son_data);
-    for (let key in BASE_DATA) {
-        result = result + `${key}=${BASE_DATA[key]}&`
-    }
-    return result;
+
+    return splicing(BASE_URL, BASE_DATA);
 }
 
 module.exports = albumRequest;
