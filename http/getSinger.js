@@ -4,7 +4,7 @@ const SINGLE_PAGE_NUM = 80;
 const BASE_URL = 'https://u.y.qq.com/cgi-bin/musicu.fcg?';
 const BASE_DATA = {
     callback: '',
-    g_tk: 5381,
+    g_tk: 211953953,
     jsonpCallback: '',
     loginUin: 0,
     hostUin: 0,
@@ -18,7 +18,8 @@ const BASE_DATA = {
 };
 
 async function singeRequest(params) {
-    let url = _setUrl();
+    let url = _setUrl(params);
+    // console.log(url);
     let res = await http(url);
     res = dataProcessing(res);
     return res;
@@ -42,15 +43,16 @@ function _setUrl({page = 1, area = -100, sex = -100, genre = -100, index = -100}
             "module":"Music.SingerListServer",
             "method":"get_singer_list",
             "param":{
-                "area": area,
-                "sex": sex,
-                "genre": genre,
-                "index": index,
-                "sin": (page - 1)*SINGLE_PAGE_NUM,
-                "cur_page": page
+                "area": +area,
+                "sex": +sex,
+                "genre": +genre,
+                "index": +index,
+                "sin": (+page - 1)*SINGLE_PAGE_NUM,
+                "cur_page": +page
             }
         }
     };
+    console.log(JSON.stringify(son_data));
     let name = "getUCGI" + (Math.random() + "").replace("0.", "");
     BASE_DATA.callback = name;
     BASE_DATA.jsonpCallback = name;
