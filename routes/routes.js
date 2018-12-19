@@ -4,10 +4,10 @@
  * file_name: 文件的真实名称
  * */
 module.exports = [{
-    path: '/getSinger',
+    path: '/singer',
     file_name: 'singer'
 },{
-    path: '/getAlbum',
+    path: '/album',
     file_name: 'album'
 },{
     path: '/getSong',

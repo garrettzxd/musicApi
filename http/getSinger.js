@@ -19,7 +19,6 @@ const BASE_DATA = {
 
 async function singeRequest(params) {
     let url = _setUrl(params);
-    // console.log(url);
     let res = await http(url);
     res = dataProcessing(res);
     return res;

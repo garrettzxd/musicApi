@@ -1,22 +1,13 @@
 let express = require('express');
 let router = express.Router();
-let {SUCCESS, MISS_PARAMETER, UN_KNOW_ERROR} = require('../common/ErrorContans');
-let paradigm = require('../common/Paradigm');
-let {getAlbumList} = require('../model/album-model');
+let getAlbumList = require('../http/getAlbumList');
 
 //获取专辑列表
-router.get('/albumList', (req, res, next) => {
+router.get('/getAlbumList', (req, res, next) => {
     getAlbumList(req.query).then((data) => {
-        res.json(paradigm({
-            message: SUCCESS,
-            data: Object.values(data)
-        }))
+        res.json(data);
     }).catch((err) => {
-        res.json(paradigm({
-            message: UN_KNOW_ERROR,
-            data: {},
-            err_msg: new Error(err)
-        }))
+        res.json(err);
     })
 });
 
