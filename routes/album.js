@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let getAlbumList = require('../http/getAlbumList');
+let getAlbum = require('../http/getAlbumListBySinger');
 
 //获取专辑列表
 router.get('/getAlbumList', (req, res, next) => {
@@ -11,7 +12,14 @@ router.get('/getAlbumList', (req, res, next) => {
     })
 });
 
-//获取单张专辑歌曲
-router.get('/albumSong', (req, res, next) => {});
+//根据歌手mid获取专辑列表
+router.get('/getAlbumListBySinger', (req, res, next) => {
+    getAlbum(req.query).then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        console.log(err);
+        res.json(err);
+    })
+});
 
 module.exports = router;
