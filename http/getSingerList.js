@@ -32,7 +32,7 @@ async function singeRequest(params) {
  * @return {string}            [生成的URL]
  */
 function _setUrl({page = 1, area = -100, sex = -100, genre = -100, index = -100} = {}) {
-    let son_data = {
+    let parameter = {
         "comm":{
             "ct":24,
             "cv":10000
@@ -50,11 +50,10 @@ function _setUrl({page = 1, area = -100, sex = -100, genre = -100, index = -100}
             }
         }
     };
-    console.log(JSON.stringify(son_data));
     let name = "getUCGI" + (Math.random() + "").replace("0.", "");
     BASE_DATA.callback = name;
     BASE_DATA.jsonpCallback = name;
-    BASE_DATA.data = encodeURIComponent(JSON.stringify(son_data));
+    BASE_DATA.data = encodeURIComponent(JSON.stringify(parameter));
 
     return splicing(BASE_URL, BASE_DATA);
 }

@@ -1,0 +1,1 @@
+const BASE_DATA = {format: 'jsonp', inCharset: 'utf8', outCharset: 'utf-8', platform: 'yqq', needNewCode: 0,};
