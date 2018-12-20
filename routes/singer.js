@@ -33,7 +33,7 @@ router.get('/getAlbumListBySinger', (req, res, next) => {
     })
 });
 
-//获取歌手mv
+//根据歌手mid获取歌手mv
 router.get('/getMVBySinger', (req, res, next) => {
     getMV(req.query).then((data) => {
         res.json(data);
