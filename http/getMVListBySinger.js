@@ -17,6 +17,7 @@ const BASE_DATA = {
     cid: 205360581
 };
 
+//获取指定歌手的MV列表数据
 async function getMV(params) {
     let url = _setUrl(params);
     let res = await http(url);
@@ -24,7 +25,8 @@ async function getMV(params) {
     return res;
 }
 
-function _setUrl({singer_mid, index = 1}) {
+
+function _setUrl({singer_mid, index = 1} = {}) {
     let parameter = {
         singermid: singer_mid,
         begin: (index - 1) * SINGLE_PAGE_NUM,

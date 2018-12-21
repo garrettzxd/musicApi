@@ -17,6 +17,7 @@ const BASE_DATA = {
     data: ''
 };
 
+//获取歌手列表数据
 async function singeRequest(params) {
     let url = _setUrl(params);
     let res = await http(url);

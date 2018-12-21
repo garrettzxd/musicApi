@@ -3,6 +3,7 @@ let {dataProcessing, splicing} = require('../common/currency');
 const SINGLE_PAGE_NUM = 30;
 const BASE_URL = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?';
 
+//获取指定歌手的歌曲列表数据
 async function getSongRequest(params) {
     let url = _setUrl(params);
     console.log('url:', url);

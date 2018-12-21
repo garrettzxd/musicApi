@@ -17,6 +17,7 @@ const BASE_DATA = {
     data: ''
 };
 
+//获取指定歌手的专辑信息列表
 async function getAlbum(params) {
     let url = _setUrl(params);
     //res可能出错
@@ -25,8 +26,13 @@ async function getAlbum(params) {
     return res;
 }
 
-
-function _setUrl({singer_mid, index}) {
+/**
+ * [_setUrl 设置请求url]
+ * @param [singer_mid] String 歌手唯一标识
+ * @param [index] Number 页码
+ * @return String
+ * */
+function _setUrl({singer_mid, index = 1} = {}) {
     let parameter = {
         singerAlbum: {
             method: 'get_singer_album',

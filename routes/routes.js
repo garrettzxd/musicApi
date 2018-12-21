@@ -15,4 +15,7 @@ module.exports = [{
 },{
     path: '/mv',
     file_name: 'mv'
+},{
+    path: '/radio',
+    file_name: 'radio'
 }];
