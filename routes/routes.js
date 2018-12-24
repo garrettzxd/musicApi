@@ -24,4 +24,7 @@ module.exports = [{
 },{
     path: '/ticket',
     file_name: 'ticketing'
+},{
+    path: '/recommend',
+    file_name: 'recommend'
 }];

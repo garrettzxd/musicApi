@@ -28,7 +28,21 @@ function splicing(base, parameter) {
     return result;
 }
 
+/**
+ * [getRandom 获取随机数字]
+ * @param [integer] Boolean 是否返回整数
+ * @return Number
+ * */
+function getRandom(integer) {
+    if (integer) {
+        return +(Math.random() + "").replace("0.", "");
+    } else {
+        return Math.random();
+    }
+}
+
 module.exports = {
     splicing,
+    getRandom,
     dataProcessing
 };
