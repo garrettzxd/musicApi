@@ -6,6 +6,7 @@
 function dataProcessing(data) {
     let fir_index = data.indexOf('(')+1;
     let last_index = data.lastIndexOf(')');
+    console.log(data.slice(fir_index,last_index));
     return JSON.parse(data.slice(fir_index,last_index));
 }
 

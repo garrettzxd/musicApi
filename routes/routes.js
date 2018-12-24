@@ -18,4 +18,7 @@ module.exports = [{
 },{
     path: '/radio',
     file_name: 'radio'
+},{
+    path: '/ranking',
+    file_name: 'ranking'
 }];
