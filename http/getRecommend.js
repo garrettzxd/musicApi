@@ -2,7 +2,10 @@ let http = require('../common/http');
 let {dataProcessing, splicing,getRandom} = require('../common/currency');
 let {BASE_DATA} = require('../common/constants');
 const BASE_URL = 'https://u.y.qq.com/cgi-bin/musicu.fcg?';
+const BASE_URL_MV = 'https://c.y.qq.com/mv/fcgi-bin/getmv_by_tag?';
 
+//获取推荐数据
+//其中rec_type是必传参数
 async function getSongList(params) {
     let {rec_type} = params,
         url = '';
@@ -11,6 +14,7 @@ async function getSongList(params) {
         case 'NEW_SONG': url = _setNewSongUrl(params); break;
         case 'NEW_ALBUM': url = _setNewAlbumUrl(params); break;
         case 'MV': url = _setMvUrl(params); break;
+        default: url = _setSongListUrl(params);
     }
     let res = await http(url);
     res = JSON.parse(res);
@@ -24,7 +28,7 @@ async function getSongList(params) {
  * @param [index] 页码
  * @return String
  * */
-function _setSongListUrl({type, id, index = 1} = {}) {
+function _setSongListUrl({type = 'personal', id, index = 1} = {}) {
     let data = null;
     if (type === 'personal') {
         data = {
@@ -95,7 +99,7 @@ function _setMvUrl({type = 'all'} = {}) {
         cmd: 'shoubo',
         lan: type
     };
-    return splicing(BASE_URL, Object.assign(BASE_DATA, parameter));
+    return splicing(BASE_URL_MV, Object.assign(BASE_DATA, parameter));
 }
 
 /**
